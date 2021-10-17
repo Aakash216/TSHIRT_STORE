@@ -7,8 +7,8 @@ import {signin, authenticate, isAuthenticated} from "../auth/helper"
 const Signin = () => {
 
   const [values, setValues] = useState({
-    email: "aakash@gmail.com",
-    password: "12345",
+    email: "",
+    password: "",
     error: "",
     loading: false,
     didRedirect: false
@@ -65,44 +65,47 @@ const onSubmit = event => {
 
 const performRedirect = () => {
   if(didRedirect) {
-    if (user && user.role === 1) {
-      return <Redirect to ="/admin/dashboard" />
+    if (user && user.role === 0) {
+      return <Redirect to ="/userchart" />
     } else {
-      return <Redirect to ="/user/dashboard" />
+      return console.log(error)
     }
   }
-  if(isAuthenticated()) {
-  return <Redirect to = "/" />
- }
 }
 
 const signInForm = () => {
   return (
     <div className="row">
-      <div className="col-md-6 offset-sm-3 text-left">
+      <div className="col-lg-6 col-md-6 col-sm-6 offset-md-3 offset-sm-3 text-left mb-0 mt-0">
         <form>
           <div className="form-group">
-            <label className="text-light">Email</label>
+            <label className="text-black ml-0 ml-2 font-weight-bold">Email</label>
             <input
               onChange={handleChange("email")}
               value={email}
-              className="form-control"
+              className="form-control border-top-0 border-left-0 border-right-0"
               type="email"
             />
           </div>
 
-          <div className="form-group">
-            <label className="text-light">Password</label>
+          <div className="form-group mt-4">
+            <label className="text-black ml-0 ml-2 font-weight-bold">Password</label>
+            <div className="forgot float-right">
+                    <a href="#" id="forgot-link" style={{Color:"#7c4dff"}}>Forgot Password?</a>
+                  </div>
             <input
               onChange={handleChange("password")}
               value={password}
-              className="form-control"
+              className="form-control border-top-0 border-left-0 border-right-0"
               type="password"
             />
           </div>
-          <button onClick={onSubmit} className="btn btn-success btn-block">
-            Submit
+          <button onClick={onSubmit} className="btn btn-block text-white form-control form-control-md rounded-pill" style={{backgroundColor:"#7c4dff"}}>
+            Log in
           </button>
+          <div className="mt-4 text-center font-weight-bold">
+                    <a href="#" id="" style={{Color:"#7c4dff"}}>Don't have account ? <Link to="/signup">Sign up</Link></a>
+                  </div>
         </form>
       </div>
     </div>
@@ -110,7 +113,7 @@ const signInForm = () => {
 };
 
     return (
-         <Base title= "Sign in page" description="A page for user to signin!">
+         <Base title= "Log in" description="A page for user to signin!">
         {loadingMessage()}
         {errorMessage()}
         {signInForm()}

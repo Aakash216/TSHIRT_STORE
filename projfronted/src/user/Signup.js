@@ -45,17 +45,17 @@ const Signup = () => {
         <div className="col-lg-6 col-md-6 col-sm-6 offset-md-3 offset-sm-3 text-left mb-0 mt-0">
           <form>
             <div className="form-group">
-              <label className="text-light">Name</label>
-              <input className="form-control form-control-md" 
+              <label className="text-black ml-0 ml-2 font-weight-bold">Name</label>
+              <input className="form-control form-control-md border-top-0 border-left-0 border-right-0" 
               onChange={handleChange("name")} 
               type="text" 
               placeholder="your name"
                value={name} 
                />
             </div>
-            <div className="form-group">
-              <label className="text-light">Email</label>
-              <input className="form-control form-control-md"  
+            <div className="form-group mt-4">
+              <label className="text-black ml-2 font-weight-bold">Email Address</label>
+              <input className="form-control form-control-md border-top-0 border-left-0 border-right-0"  
               onChange={handleChange("email")}  
               placeholder="ex@gmail.com"
               type="email" 
@@ -63,9 +63,9 @@ const Signup = () => {
               />
             </div>
 
-            <div className="form-group">
-              <label className="text-light">Password</label>
-              <input className="form-control form-control-md"  
+            <div className="form-group mt-4">
+              <label className="text-black ml-2 font-weight-bold">Password</label>
+              <input className="form-control form-control-md border-top-0 border-left-0 border-right-0"  
               onChange={handleChange("password")} 
                type="password" 
                placeholder="your password"
@@ -73,7 +73,7 @@ const Signup = () => {
                />
             </div>
             <button onClick={onSubmit}
-            className="btn btn-success btn-block form-control form-control-md">Submit</button>
+            className="btn btn-block text-white form-control form-control-md rounded-pill" style={{backgroundColor:"#7c4dff"}}>Submit</button>
           </form>
         </div>
       </div>
@@ -86,7 +86,7 @@ const Signup = () => {
       <div className="col-md-6 offset-sm-3 text-left">
     <div className="alert alert-success"
       style={{display: success ? "" : "none"}}>
-        New account was created successfully. Please <Link to="/signin">Login Here</Link>
+        New account was created successfully. Please <Link to="/">Login Here</Link>
     </div>
     </div>
     </div>
@@ -107,7 +107,7 @@ const Signup = () => {
 };
 
     return (
-        <Base title= "Sign up page" description="A page for user to signup!">
+        <Base title= "Sign up" description="A page for user to signup!">
         {successMessage()}
         {errorMessage()}
         {signUpForm()}
